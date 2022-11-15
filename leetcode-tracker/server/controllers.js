@@ -27,10 +27,25 @@ module.exports = {
       })
   },
 
-  findProblemByLevel: function (req, res) {
-    models.findByLevel(req.params)
+  getAllProblems: function (req, res) {
+    models.getAll()
       .then((response)=>{
-        res.status(200).json(response)
+        res.status(200).json(response.rows)
+      })
+      .catch((err)=>{
+        console.log(err);
+        res.sendStatus(404);
+      })
+  },
+
+  findProblemsByLevel: function (req, res) {
+    models.findByLevel(req.params.level)
+      .then((response)=>{
+        res.status(200).json(response.rows);
+      })
+      .catch((err)=>{
+        console.log(err);
+        res.sendStatus(404);
       })
   }
 

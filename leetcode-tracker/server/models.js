@@ -8,26 +8,30 @@ module.exports = {
   },
 
   delete: function(name) {
-    return db.query(`DELETE FROM problems WHERE name=${name}`)
+    return db.query(`DELETE FROM problems WHERE name='${name}'`)
   },
 
   updateFamiliarity: function (problem) {
-    return db.query(`UPDATE problems SET familiarity = ${problem.familiarity} WHERE name = ${problem.name}`)
+    return db.query(`UPDATE problems SET familiarity = ${problem.familiarity} WHERE name = '${problem.name}'`)
   },
 
   updateLastDuration: function (problem) {
-    return db.query(`UPDATE problems SET last_duration = ${problem.last_duration} WHERE name = ${problem.name}`)
+    return db.query(`UPDATE problems SET last_duration = ${problem.last_duration} WHERE name = '${problem.name}'`)
+  },
+
+  getAll: function () {
+    return db.query(`SELECT * FROM problems`);
   },
 
   findByLevel: function (param) {
-    return db.query(`SELECT name, category, last_duration, link, familiarity FROM problems WHERE level=${param}`)
+    return db.query(`SELECT name, category, last_duration, link, familiarity FROM problems WHERE level='${param}'`)
   },
 
   findByCat: function (param) {
-    return db.query(`SELECT name, level, last_duration, link, familiarity FROM problems WHERE category=${param}`)
+    return db.query(`SELECT name, level, last_duration, link, familiarity FROM problems WHERE category='${param}'`)
   },
 
   findByFamiliarity: function (param) {
-    return db.query(`SELECT name, category, level, last_duration, link FROM problems WHERE familiarity=${param}`)
+    return db.query(`SELECT name, category, level, last_duration, link FROM problems WHERE familiarity='${param}'`)
   },
 }
