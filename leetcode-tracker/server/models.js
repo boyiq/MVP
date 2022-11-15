@@ -1,26 +1,27 @@
 const db = require('./db.js');
 
 module.exports = {
-  create: function (problem) {
-    return db.query(`
-      INSERT INTO problems (name, category, level, target_duration, link, familiarity)
-        VALUES (${problem.name}, ${problem.category}, ${problem.level}, ${problem.target_duration}, ${problem.link}, ${problem.familiarity})`)
+  getAll: function () {
+    return db.query(`SELECT * FROM problems`);
   },
 
-  delete: function(name) {
-    return db.query(`DELETE FROM problems WHERE name='${name}'`)
+  create: function (problem) {
+    console.log('got to models and the passed in problem is ', problem)
+    return db.query(`
+      INSERT INTO problems (name, category, level, target_duration, link, familiarity)
+        VALUES ('${problem.name}', '${problem.category}', '${problem.level}', ${problem.target_duration}, '${problem.link}', '${problem.familiarity}')`)
+  },
+
+  delete: function(id) {
+    return db.query(`DELETE FROM problems WHERE id=${id}`)
   },
 
   updateFamiliarity: function (problem) {
-    return db.query(`UPDATE problems SET familiarity = ${problem.familiarity} WHERE name = '${problem.name}'`)
+    return db.query(`UPDATE problems SET familiarity = '${problem.familiarity}' WHERE id = ${problem.id}`)
   },
 
   updateLastDuration: function (problem) {
-    return db.query(`UPDATE problems SET last_duration = ${problem.last_duration} WHERE name = '${problem.name}'`)
-  },
-
-  getAll: function () {
-    return db.query(`SELECT * FROM problems`);
+    return db.query(`UPDATE problems SET last_duration = ${problem.last_duration} WHERE name = ${problem.id}`)
   },
 
   findByLevel: function (param) {
