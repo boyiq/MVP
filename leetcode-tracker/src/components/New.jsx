@@ -1,39 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import generateLink from '../helpers/generateLink.js'
+import {renderCats, renderLevels, renderDurations} from '../helpers/renderLists.js'
 
-const New = ()=>{
+const New = ({allProblems, setAllProblems})=>{
+  const [newProblem, setNewProblem] = useState({});
+
+  const handleSubmit = (problem)=>{
+    console.log(problem);
+/*     axios.post('/problems', problem)
+      .then(()=>{
+        axios.get('/problems')
+      })
+      .then((results)=>{
+        setAllProblems(results.data)
+      }) */
+  }
+
   return (
     <div>
-      <form id="new-problem-form">
+      <form id="new-problem-form" onSubmit={(event)=>{
+        event.preventDefault();
+        handleSubmit(newProblem)
+      }}>
         <label>Problem name</label>
-        <input></input>
+        <input type="text" onChange={(event)=>{
+          let copy = {...newProblem};
+          copy.name = event.target.value;
+          copy.link = generateLink(event.target.value)
+          copy.familiarity = 'Unfamiliar'
+          setNewProblem(copy)
+        }}></input>
         <label>Category</label>
-        <select>
-          <option value="Arrays">Arrays</option>
-          <option value="Binary">Binary</option>
-          <option value="Dynamic Programming">Dynamic Programming</option>
-          <option value="Graph">Graph</option>
-          <option value="Interval">Interval</option>
-          <option value="Linked List">Linked List</option>
-          <option value="Matrix">Matrix</option>
-          <option value="String">String</option>
-          <option value="Tree">Tree</option>
-          <option value="Heap">Arrays</option>
+        <select
+          className="dropdown-list"
+          onChange={(event)=>{
+            let copy = {...newProblem};
+            copy.category = event.target.value;
+            setNewProblem(copy)
+          }}
+        >
+          {renderCats()}
         </select>
         <label>Difficulty level</label>
-        <select>
-          <option value="Easy">Easy</option>
-          <option value="Medium">Medium</option>
-          <option value="Hard">Hard</option>
+        <select
+          className="dropdown-list"
+          onChange={(event)=>{
+            let copy = {...newProblem};
+            copy.level = event.target.value;
+            setNewProblem(copy)
+          }}
+        >
+          {renderLevels()}
         </select>
         <label>Target Duration</label>
-        <select>
-          <option value="15">15</option>
-          <option value="20">20</option>
-          <option value="25">25</option>
-          <option value="30">30</option>
-          <option value="35">35</option>
-          <option value="40">40</option>
-          <option value="45">45</option>
+        <select
+          className="dropdown-list"
+          onChange={(event)=>{
+            let copy = {...newProblem};
+            copy.target_duration = event.target.value;
+            setNewProblem(copy)
+          }}
+        >
+          {renderDurations()}
         </select>
         <button type="submit">Submit</button>
       </form>
