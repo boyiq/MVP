@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Problem from './Problem.jsx'
 import {renderCats, renderFamiliarities} from '../helpers/renderLists.js';
 
-const Problems = ({allProblems})=>{
+const Problems = ({allProblems, setAllProblems})=>{
   const [filter, setFilter]=useState('all');
   const [filter2, setFilter2]=useState('all');
   const renderFilters = ()=>{
@@ -40,7 +40,7 @@ const Problems = ({allProblems})=>{
         <div className="problem-list">
           {renderTitle()}
           {allProblems.map((problem)=>(
-            <Problem key={problem.name} problem={problem}/>
+            <Problem key={problem.name} problem={problem} allProblems={allProblems} setAllProblems={setAllProblems}/>
           ))}
         </div>
       </div>
@@ -54,7 +54,7 @@ const Problems = ({allProblems})=>{
           {allProblems.map((problem)=>{
             if (problem.familiarity === filter2)
             return (
-              <Problem key={problem.name} problem={problem}/>
+              <Problem key={problem.name} problem={problem} allProblems={allProblems} setAllProblems={setAllProblems}/>
             )
           })}
         </div>
@@ -69,7 +69,7 @@ const Problems = ({allProblems})=>{
           {allProblems.map((problem)=>{
             if (problem.category === filter)
             return (
-              <Problem key={problem.name} problem={problem}/>
+              <Problem key={problem.name} problem={problem} allProblems={allProblems} setAllProblems={setAllProblems}/>
             )
           })}
         </div>
@@ -84,7 +84,7 @@ const Problems = ({allProblems})=>{
           {allProblems.map((problem)=>{
             if (problem.familiarity === filter2 && problem.category === filter)
             return (
-              <Problem key={problem.name} problem={problem}/>
+              <Problem key={problem.name} problem={problem} allProblems={allProblems} setAllProblems={setAllProblems}/>
             )
           })}
         </div>

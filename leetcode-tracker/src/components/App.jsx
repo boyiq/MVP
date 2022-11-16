@@ -32,7 +32,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route path='/new' element={<New allProblems={allProblems} setAllProblems={setAllProblems}/>} />
-        <Route path='/problems' exact element={<Problems allProblems={allProblems}/>} />
+        <Route path='/problems' exact element={<Problems allProblems={allProblems} setAllProblems={setAllProblems}/>} />
         <Route path='/practice' exact element={<Practice allProblems={allProblems}/>} />
       </Routes>
       </Router>
