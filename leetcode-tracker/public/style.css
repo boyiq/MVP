@@ -11,5 +11,12 @@ body {
 }
 
 .nav-link {
-  margin: 0, 20px;
+  margin:20px;
+}
+
+#new-problem-form {
+  margin: auto;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
 }

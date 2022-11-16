@@ -11,21 +11,15 @@ const Navbar = ()=>{
 
   return (
     <div className="navbar">
-      <button className="nav-link" onClick={(event)=>{
-        event.preventDefault();
-        handleClick('/')
-      }}>Summary</button>
-      <button className="nav-link" onClick={(event)=>{
-        event.preventDefault();
-        handleClick('/problems')
-      }}>Problems</button>
-      <button className="nav-link" onClick={(event)=>{
-        event.preventDefault();
-        handleClick('/new')
-      }}>Add Problems</button>
-{/*       <Link className="nav-link" to="/">Summary</Link>
-      <Link className="nav-link" to="/problems">Problems</Link>
-      <Link className="nav-link" to='/new'>Add Problem</Link> */}
+      <div className="nav-link">
+        <Link to="/">Summary</Link>
+      </div>
+      <div className="nav-link">
+        <Link to="/problems">Problems</Link>
+      </div>
+      <div className="nav-link">
+        <Link to='/new'>Add Problem</Link>
+      </div>
     </div>
   );
 }
