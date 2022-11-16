@@ -3,6 +3,7 @@ import React from 'react';
 const categories = ['Arrays', 'Binary', 'Dynamic Programming', 'Graph', 'Interval', 'Linked List', 'Matrix', 'String', 'Tree', 'Heap'];
 const levels = ['Easy', 'Medium', 'Hard'];
 const durations = ['15', '20', '25', '30','35', '40', '45'];
+const familiaries = ['Unfamiliar', 'Familiar', 'Mastered']
 
 const renderCats = ()=>{
   let result = categories.map((category)=>(
@@ -25,5 +26,12 @@ const renderDurations = ()=>{
   return result;
 }
 
+const renderFamiliarities = () => {
+  let result = familiaries.map((familiarity)=>(
+    <option value={familiarity} key={familiarity}>{familiarity}</option>
+  ))
+  return result;
+}
 
-export {renderCats, renderLevels, renderDurations};
+
+export {renderCats, renderLevels, renderDurations, renderFamiliarities};
