@@ -1,7 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import axios from 'axios';
-import Summary from './Summary.jsx';
+import Home from './Summary.jsx';
 import Problems from './Problems.jsx';
 import New from './New.jsx'
 import Navbar from './Navbar.jsx';
@@ -28,9 +28,9 @@ function App() {
       <Router>
       <Navbar />
       <Routes>
-        <Route exact path='/' element={<Summary />} />
-        <Route path='/new' element={<New />} />
-        <Route path='/problems' exact element={<Problems allproblems={allProblems}/>} />
+        <Route exact path='/' element={<Home />} />
+        <Route path='/new' element={<New allProblems={allProblems} setAllProblems={setAllProblems}/>} />
+        <Route path='/problems' exact element={<Problems allProblems={allProblems}/>} />
       </Routes>
       </Router>
     </div>
