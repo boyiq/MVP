@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Problems = ({allproblems})=>{
+const Problems = ({allProblems})=>{
   return (
     <div>
-      {allproblems[0].name}
+      {allProblems[0].name}
     </div>
   );
 }
