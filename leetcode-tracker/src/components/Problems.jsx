@@ -26,7 +26,7 @@ const Problems = ({allProblems})=>{
         {renderFilters()}
         <div className="problem-list">
           {allProblems.map((problem)=>(
-            <Problem problem={problem}/>
+            <Problem key={problem.name} problem={problem}/>
           ))}
         </div>
       </div>
@@ -39,7 +39,7 @@ const Problems = ({allProblems})=>{
           {allProblems.map((problem)=>{
             if (problem.familiarity === filter2)
             return (
-              <Problem problem={problem}/>
+              <Problem key={problem.name} problem={problem}/>
             )
           })}
         </div>
@@ -53,7 +53,7 @@ const Problems = ({allProblems})=>{
           {allProblems.map((problem)=>{
             if (problem.category === filter)
             return (
-              <Problem problem={problem}/>
+              <Problem key={problem.name} problem={problem}/>
             )
           })}
         </div>
@@ -67,7 +67,7 @@ const Problems = ({allProblems})=>{
           {allProblems.map((problem)=>{
             if (problem.familiarity === filter2 && problem.category === filter)
             return (
-              <Problem problem={problem}/>
+              <Problem key={problem.name} problem={problem}/>
             )
           })}
         </div>
