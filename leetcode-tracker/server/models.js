@@ -6,7 +6,6 @@ module.exports = {
   },
 
   create: function (problem) {
-    console.log('got to models and the passed in problem is ', problem)
     return db.query(`
       INSERT INTO problems (name, category, level, target_duration, link, familiarity)
         VALUES ('${problem.name}', '${problem.category}', '${problem.level}', ${problem.target_duration}, '${problem.link}', '${problem.familiarity}')`)
