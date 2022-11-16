@@ -30,7 +30,7 @@ function App() {
       <Router>
       <Navbar />
       <Routes>
-        <Route exact path='/' element={<Home />} />
+        <Route exact path='/' element={<Home allProblems={allProblems}/>} />
         <Route path='/new' element={<New allProblems={allProblems} setAllProblems={setAllProblems}/>} />
         <Route path='/problems' exact element={<Problems allProblems={allProblems} setAllProblems={setAllProblems}/>} />
         <Route path='/practice' exact element={<Practice allProblems={allProblems}/>} />
