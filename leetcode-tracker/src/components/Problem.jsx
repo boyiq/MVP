@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const Problem = ({problem})=>{
   return (
@@ -9,6 +10,7 @@ const Problem = ({problem})=>{
       <div>{problem.target_duration}</div>
       <div>{problem.last_duration}</div>
       <div>{problem.familiarity}</div>
+      <button>delete</button>
     </div>
   );
 }

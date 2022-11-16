@@ -22,10 +22,10 @@ body {
 }
 
 .single-problem {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 30% repeat(4, 1fr) 15% 10%;
+  gap: 10px;
 }
 
 #new-problem-form {
