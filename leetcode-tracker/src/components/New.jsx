@@ -8,13 +8,19 @@ const New = ({allProblems, setAllProblems})=>{
 
   const handleSubmit = (problem)=>{
     console.log(problem);
-/*     axios.post('/problems', problem)
+    axios.post('/problems', problem)
       .then(()=>{
         axios.get('/problems')
+        .then((results)=>{
+          setAllProblems(results.data)
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
       })
-      .then((results)=>{
-        setAllProblems(results.data)
-      }) */
+      .catch((err)=>{
+        console.log(err);
+      })
   }
 
   return (
