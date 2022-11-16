@@ -5,11 +5,11 @@ const Problem = ({problem})=>{
   return (
     <div className="single-problem">
       <div>{problem.name}</div>
-      <div>{problem.categroy}</div>
+      <div>{problem.category}</div>
       <div>{problem.level}</div>
-      <div>{problem.target_duration}</div>
-      <div>{problem.last_duration}</div>
-      <div>{problem.familiarity}</div>
+      <div className="centered-item">{problem.target_duration}</div>
+      <div className="centered-item">{problem.last_duration}</div>
+      <div className="centered-item">{problem.familiarity}</div>
       <button>delete</button>
     </div>
   );

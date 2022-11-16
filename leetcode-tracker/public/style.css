@@ -21,11 +21,23 @@ body {
   color: blueviolet;
 }
 
+.title {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 30% 20% 11% 9% 9% 10% 5%;
+  gap: 1%;
+  justify-items: center;
+}
+
 .single-problem {
   margin-top: 15px;
   display: grid;
-  grid-template-columns: 30% repeat(4, 1fr) 15% 10%;
-  gap: 10px;
+  grid-template-columns: 30% 20% 11% 9% 9% 10% 5%;
+  gap: 1%;
+}
+
+.centered-item {
+  justify-self: center;
 }
 
 #new-problem-form {

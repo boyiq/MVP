@@ -20,11 +20,25 @@ const Problems = ({allProblems})=>{
     )
   }
 
+  const renderTitle = ()=>{
+    return (
+      <div className="title">
+        <div>Name</div>
+        <div>Cateory</div>
+        <div>Difficulty Level</div>
+        <div>Target Duration</div>
+        <div>Last attempt Duration</div>
+        <div>familiarity</div>
+        <div> </div>
+      </div>
+    )
+  }
   if (filter === 'all' && filter2 === 'all') {
     return (
       <div>
         {renderFilters()}
         <div className="problem-list">
+          {renderTitle()}
           {allProblems.map((problem)=>(
             <Problem key={problem.name} problem={problem}/>
           ))}
@@ -36,6 +50,7 @@ const Problems = ({allProblems})=>{
       <div>
         {renderFilters()}
         <div className="problem-list">
+          {renderTitle()}
           {allProblems.map((problem)=>{
             if (problem.familiarity === filter2)
             return (
@@ -50,6 +65,7 @@ const Problems = ({allProblems})=>{
       <div>
         {renderFilters()}
         <div className="problem-list">
+          {renderTitle()}
           {allProblems.map((problem)=>{
             if (problem.category === filter)
             return (
@@ -64,6 +80,7 @@ const Problems = ({allProblems})=>{
       <div>
         {renderFilters()}
         <div className="problem-list">
+          {renderTitle()}
           {allProblems.map((problem)=>{
             if (problem.familiarity === filter2 && problem.category === filter)
             return (
