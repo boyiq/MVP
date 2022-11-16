@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import axios from 'axios';
 import Home from './Summary.jsx';
 import Problems from './Problems.jsx';
-import New from './New.jsx'
+import New from './New.jsx';
+import Practice from './Practice.jsx';
 import Navbar from './Navbar.jsx';
 
 function App() {
@@ -25,12 +26,14 @@ function App() {
 
   return (
     <div className="App">
+      <h1>My Leetcode Progress</h1>
       <Router>
       <Navbar />
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route path='/new' element={<New allProblems={allProblems} setAllProblems={setAllProblems}/>} />
         <Route path='/problems' exact element={<Problems allProblems={allProblems}/>} />
+        <Route path='/practice' exact element={<Practice allProblems={allProblems}/>} />
       </Routes>
       </Router>
     </div>
