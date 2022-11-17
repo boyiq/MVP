@@ -3,23 +3,86 @@ body {
   BlinkMacSystemFont, 'Segoe UI', Roboto,
   Oxygen, Ubuntu, Cantarell, 'Open Sans',
   'Helvetica Neue', sans-serif;
+  margin: 0;
+  background-color: #f7f9f9;
+}
+
+h1 {
+  color: #372948;
+  margin: 0;
+  padding: 20px;
+  background-color: #E9A6A6;
 }
 
 .navbar {
   display: flex;
   flex-direction: row;
+  background-color: #e8e4dd;
 }
 
 .nav-link {
   margin:20px;
-  color: black;
+  color: #372948;
   text-decoration: none;
   font-weight: 600;
+  font-size: 20px;
 }
 
 .nav-link:hover {
-  color: blueviolet;
+  color: #E9A6A6;
 }
+
+/* ----------- Home Page ------------ */
+.summary {
+  font-size: 24px;
+  color: #372948;
+  text-align: center;
+  margin-top: 50px;
+  font-weight: 600;
+}
+
+.homecards {
+  display: flex;
+  flex-direction: row;
+  margin: 100px;
+  gap: 50px;
+  justify-content: center;
+}
+
+.home-card {
+  height: 250px;
+  width: 250px;
+  border: solid #372948;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.home-familiarity {
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.unfamiliar {
+  background-color: #FF7D7D;
+}
+
+.familiar {
+  background-color: #FAD6A5;
+}
+
+.mastered {
+  background-color: #B6E388;
+}
+
+.home-number {
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 25px;
+}
+
+/* ----------- Problems Page ------------ */
 
 .title {
   margin-top: 15px;

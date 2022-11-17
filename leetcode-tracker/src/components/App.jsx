@@ -27,15 +27,17 @@ function App() {
   return (
     <div className="App">
       <h1>My Leetcode Progress</h1>
-      <Router>
-      <Navbar />
-      <Routes>
-        <Route exact path='/' element={<Home allProblems={allProblems}/>} />
-        <Route path='/new' element={<New allProblems={allProblems} setAllProblems={setAllProblems}/>} />
-        <Route path='/problems' exact element={<Problems allProblems={allProblems} setAllProblems={setAllProblems}/>} />
-        <Route path='/practice' exact element={<Practice allProblems={allProblems} setAllProblems={setAllProblems}/>} />
-      </Routes>
-      </Router>
+      <div className="navbar-section">
+        <Router>
+        <Navbar />
+        <Routes>
+          <Route exact path='/' element={<Home allProblems={allProblems}/>} />
+          <Route path='/new' element={<New allProblems={allProblems} setAllProblems={setAllProblems}/>} />
+          <Route path='/problems' exact element={<Problems allProblems={allProblems} setAllProblems={setAllProblems}/>} />
+          <Route path='/practice' exact element={<Practice allProblems={allProblems} setAllProblems={setAllProblems}/>} />
+        </Routes>
+        </Router>
+      </div>
     </div>
   );
 }
