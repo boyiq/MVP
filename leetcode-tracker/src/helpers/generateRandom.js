@@ -28,6 +28,7 @@ const generateRandomCards = (array, mode)=>{
     let newMastered = _.sample(mastered, 1);
     result = newUnfamiliar.concat(newFamiliar).concat(newMastered);
   }
+  console.log(result);
   return _.shuffle(result);
 }
 
