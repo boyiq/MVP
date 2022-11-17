@@ -20,7 +20,7 @@ module.exports = {
   },
 
   updateLastDuration: function (problem) {
-    return db.query(`UPDATE problems SET last_duration = ${problem.last_duration} WHERE name = ${problem.id}`)
+    return db.query(`UPDATE problems SET last_duration = ${problem.last_duration} WHERE id = ${problem.id}`)
   },
 
   findByLevel: function (param) {
