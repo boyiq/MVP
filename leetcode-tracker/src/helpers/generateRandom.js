@@ -1,6 +1,8 @@
 import _ from 'underscore';
 
 const generateRandomCards = (array, mode)=>{
+  console.log('the passed in array is ', array);
+  console.log('the passed in mode is ', mode);
   let unfamiliar = [];
   let familiar = [];
   let mastered = [];
@@ -11,6 +13,8 @@ const generateRandomCards = (array, mode)=>{
       unfamiliar.push(element);
     } else if (element.familiarity === 'Familiar') {
       familiar.push(element);
+    } else if (element.familiarity === 'Mastered') {
+      mastered.push(element);
     }
   })
 
@@ -28,8 +32,9 @@ const generateRandomCards = (array, mode)=>{
     let newMastered = _.sample(mastered, 1);
     result = newUnfamiliar.concat(newFamiliar).concat(newMastered);
   }
-  console.log(result);
-  return _.shuffle(result);
+  let shuffledResult = _.shuffle(result);
+  console.log('Shuffled result is ', shuffledResult)
+  return shuffledResult;
 }
 
 export default generateRandomCards;

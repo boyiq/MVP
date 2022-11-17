@@ -9,6 +9,7 @@ const Practice = ({allProblems})=>{
   const [selectedProblems, setSelectedProblems] = useState(allProblems)
   const [flashcards, setFlashcards] = useState(allProblems);
   const [mode, setMode] = useState('review');
+  const [currCardIndex, setCurrCardIndex]=useState('');
 
   if (firstLoad) {
     return (
@@ -17,8 +18,14 @@ const Practice = ({allProblems})=>{
           <label>Pick a category</label>
           <select className="dropdown-list" onChange={(event)=>{
             setCategory(event.target.value);
-            setSelectedProblems(filterProblems(event.target.value, allProblems));
-            setFlashcards(generateRandom(selectedProblems, mode));
+            // setSelectedProblems(filterProblems(event.target.value, allProblems));
+            if (event.target.value === 'all') {
+              setSelectedProblems(allProblems);
+              setFlashcards(generateRandom(allProblems, mode));
+            } else {
+              setSelectedProblems(filterProblems(event.target.value, allProblems))
+              setFlashcards(generateRandom(filterProblems(event.target.value, allProblems), mode));
+            }
           }}
         >
             <option value='all'>All</option>
@@ -27,13 +34,14 @@ const Practice = ({allProblems})=>{
           <label>Pick a mode</label>
           <select className="dropdown-list" onChange={(event)=>{
             setMode(event.target.value);
-            setFlashcards(generateRandom(selectedProblems, mode));
+            setFlashcards(generateRandom(selectedProblems, event.target.value));
           }}>
             <option value="review">Review</option>
             <option value="grind">Grind</option>
           </select>
           <button onClick={()=>{
             setFirstLoad(false);
+            setCurrCardIndex(0);
           }}>OK</button>
         </form>
       </div>
@@ -43,8 +51,10 @@ const Practice = ({allProblems})=>{
   return (
     <div>
       <div className="flashcard">
-        <div>{flashcards[0].name}</div>
-        <a href={flashcards[0].link} target="_blank" rel="noopener noreferrer">Go to problem</a>
+        <div>{flashcards[currCardIndex].name}</div>
+        <div>{flashcards[currCardIndex].category}</div>
+        <div>{flashcards[currCardIndex].familiarity}</div>
+        <a href={flashcards[currCardIndex].link} target="_blank" rel="noopener noreferrer">Go to problem</a>
       </div>
       <div>
         <form>
@@ -54,12 +64,20 @@ const Practice = ({allProblems})=>{
         </form>
       </div>
       <div>
-        <button>Unfamiliar</button>
+        <button onClick={()=>{
+
+        }}>Unfamiliar</button>
         <button>Familiar</button>
         <button>Mastered</button>
       </div>
-      <button>Before</button>
-      <button>Next</button>
+      <button onClick={()=>{
+        if (currCardIndex !== 0) {
+          setCurrCardIndex(currCardIndex - 1);
+        }}}>Before</button>
+      <button onClick={()=>{
+        if (currCardIndex !== flashcards.length - 1) {
+          setCurrCardIndex(currCardIndex + 1)
+        }}}>Next</button>
     </div>
   );
 }
