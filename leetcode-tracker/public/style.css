@@ -4,20 +4,41 @@ body {
   Oxygen, Ubuntu, Cantarell, 'Open Sans',
   'Helvetica Neue', sans-serif;
   margin: 0;
-  background-color: #f7f9f9;
+  background-color: #f0f2f8;
 }
 
 h1 {
   color: #372948;
   margin: 0;
   padding: 20px;
-  background-color: #E9A6A6;
+  background-color: #92B4EC;
+}
+
+button {
+  width: 80px;
+  height: 30px;
+  border: solid #372948;
+  border-width: 2px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #372948;
+  color: white;
+}
+
+.dropdown-list, input {
+  height: 30px;
+  border: solid #372948;
+  border-width: 2px;
 }
 
 .navbar {
   display: flex;
   flex-direction: row;
-  background-color: #e8e4dd;
+  background-color: #D6E5FA;
 }
 
 .nav-link {
@@ -29,7 +50,7 @@ h1 {
 }
 
 .nav-link:hover {
-  color: #E9A6A6;
+  color: #92B4EC;
 }
 
 /* ----------- Home Page ------------ */
@@ -103,9 +124,93 @@ h1 {
   justify-self: center;
 }
 
+/* ----------- Practice selection Page ------------ */
+.practice-selection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
+  width: 50vw;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.selection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+}
+
+.label {
+  width: 160px;
+  color: #372948;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.dropdown-list {
+  width: 160px
+}
+/* ----------- Practice flashcards Page ------------ */
+.flashcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  width: 500px;
+  height: 500px;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #D2DAFF;
+  border-radius: 35px;
+  padding: 20px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:10px;
+}
+
+#info-name {
+  color: #372948;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+#info-cat {
+  padding: 8px;
+  border-radius: 12px;
+  color: white;
+  background-color: #73777B;
+  font-size: 16px;
+}
+
+.mark-status {
+  border:none;
+  border-radius: 15px;
+  width: 140px;
+  height: 45px;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 5px;
+}
+
+.mark-status:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+
+/* ----------- New Problem Page ------------ */
 #new-problem-form {
   margin: auto;
   width: 50vw;
   display: flex;
   flex-direction: column;
 }
+
