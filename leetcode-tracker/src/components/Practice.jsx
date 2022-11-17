@@ -74,41 +74,42 @@ const Practice = ({allProblems, setAllProblems})=>{
       <div className="card-info">
         <div id="info-name">{flashcards[currCardIndex].name}</div>
         <div id="info-cat">{flashcards[currCardIndex].category}</div>
-{/*         <div id="info-familiarity">{flashcards[currCardIndex].familiarity}</div> */}
         {renderFamiliarity(flashcards[currCardIndex].familiarity)}
         <div id="info-target">Aim to solve in {flashcards[currCardIndex].target_duration} min</div>
         <div>Last time you spent {flashcards[currCardIndex].last_duration} min solving the problem</div>
-        <a href={flashcards[currCardIndex].link} target="_blank" rel="noopener noreferrer">Go to problem</a>
+        <a id="go-to-leetcode" href={flashcards[currCardIndex].link} target="_blank" rel="noopener noreferrer">Go to problem</a>
       </div>
       <div>
-        <form onSubmit={(event)=>{
+        <form className="card-duration" onSubmit={(event)=>{
           event.preventDefault();
           updateDur(flashcards[currCardIndex], parseInt(lastDur), setAllProblems)
         }}>
-          <label>Current Attempt Duration</label>
+          <label>Current Attempt Duration:</label>
           <input type="text" onChange={(event)=>{setLastDur(event.target.value)}}></input>
           <button type="submit">Submit</button>
         </form>
       </div>
-      <div>
+      <div className="status-section">
         <button className="mark-status unfamiliar" onClick={()=>{
           markStatus(flashcards[currCardIndex], 'Unfamiliar', setAllProblems);
-        }}>Mark as Unfamiliar  <i class="fa-regular fa-circle-question"></i></button>
+        }}>Unfamiliar  <i class="fa-regular fa-circle-question"></i></button>
         <button className="mark-status familiar" onClick={()=>{
           markStatus(flashcards[currCardIndex], 'Familiar', setAllProblems);
-        }}>Mark as Familiar  <i class="fa-regular fa-face-laugh-squint"></i></button>
+        }}>Familiar  <i class="fa-regular fa-face-laugh-squint"></i></button>
         <button className="mark-status mastered" onClick={()=>{
           markStatus(flashcards[currCardIndex], 'Mastered', setAllProblems);
-        }}>Mark as Mastered  <i class="fa-solid fa-bolt"></i></button>
+        }}>Mastered  <i class="fa-solid fa-bolt"></i></button>
       </div>
-      <button onClick={()=>{
-        if (currCardIndex !== 0) {
-          setCurrCardIndex(currCardIndex - 1);
-        }}}>Before</button>
-      <button onClick={()=>{
-        if (currCardIndex !== flashcards.length - 1) {
-          setCurrCardIndex(currCardIndex + 1)
-        }}}>Next</button>
+      <div className="nav-buttons">
+        <button className="nav-button" onClick={()=>{
+          if (currCardIndex !== 0) {
+            setCurrCardIndex(currCardIndex - 1);
+          }}}><i class="fa-solid fa-circle-left"></i></button>
+        <button className="nav-button" onClick={()=>{
+          if (currCardIndex !== flashcards.length - 1) {
+            setCurrCardIndex(currCardIndex + 1)
+          }}}><i class="fa-solid fa-circle-right"></i></button>
+      </div>
     </div>
   );
 }
