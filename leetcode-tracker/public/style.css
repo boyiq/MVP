@@ -124,6 +124,11 @@ button:hover {
   justify-self: center;
 }
 
+.problem-list {
+  margin: auto;
+  width: 70vw;
+}
+
 /* ----------- Practice selection Page ------------ */
 .practice-selection {
   display: flex;
