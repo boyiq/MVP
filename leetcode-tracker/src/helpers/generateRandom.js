@@ -1,8 +1,6 @@
 import _ from 'underscore';
 
 const generateRandomCards = (array, mode)=>{
-  console.log('the passed in array is ', array);
-  console.log('the passed in mode is ', mode);
   let unfamiliar = [];
   let familiar = [];
   let mastered = [];
@@ -33,7 +31,6 @@ const generateRandomCards = (array, mode)=>{
     result = newUnfamiliar.concat(newFamiliar).concat(newMastered);
   }
   let shuffledResult = _.shuffle(result);
-  console.log('Shuffled result is ', shuffledResult)
   return shuffledResult;
 }
 
