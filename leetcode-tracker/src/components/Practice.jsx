@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 import {renderCats} from '../helpers/renderLists.js';
 import filterProblems from '../helpers/filterProblems.js';
-import generateRandom from '../helpers/generateRandom.js'
+import generateRandom from '../helpers/generateRandom.js';
+import {markStatus, updateDur} from '../helpers/updateProblem.js';
 
-const Practice = ({allProblems})=>{
+const Practice = ({allProblems, setAllProblems})=>{
   const [category, setCategory] = useState('all');
   const [firstLoad, setFirstLoad] = useState(true);
   const [selectedProblems, setSelectedProblems] = useState(allProblems)
-  const [flashcards, setFlashcards] = useState(allProblems);
   const [mode, setMode] = useState('review');
+  const [flashcards, setFlashcards] = useState(generateRandom(allProblems, mode));
   const [currCardIndex, setCurrCardIndex]=useState('');
+  const [lastDur, setLastDur] = useState('');
 
   if (firstLoad) {
     return (
@@ -18,7 +20,6 @@ const Practice = ({allProblems})=>{
           <label>Pick a category</label>
           <select className="dropdown-list" onChange={(event)=>{
             setCategory(event.target.value);
-            // setSelectedProblems(filterProblems(event.target.value, allProblems));
             if (event.target.value === 'all') {
               setSelectedProblems(allProblems);
               setFlashcards(generateRandom(allProblems, mode));
@@ -54,21 +55,30 @@ const Practice = ({allProblems})=>{
         <div>{flashcards[currCardIndex].name}</div>
         <div>{flashcards[currCardIndex].category}</div>
         <div>{flashcards[currCardIndex].familiarity}</div>
+        <div>Aim to solve in {flashcards[currCardIndex].target_duration} min</div>
+        <div>Last time you spent {flashcards[currCardIndex].last_duration} min solving the problem</div>
         <a href={flashcards[currCardIndex].link} target="_blank" rel="noopener noreferrer">Go to problem</a>
       </div>
       <div>
-        <form>
+        <form onSubmit={(event)=>{
+          event.preventDefault();
+          updateDur(flashcards[currCardIndex], parseInt(lastDur), setAllProblems)
+        }}>
           <label>Current Attempt Duration</label>
-          <input type="text"></input>
+          <input type="text" onChange={(event)=>{setLastDur(event.target.value)}}></input>
           <button type="submit">Submit</button>
         </form>
       </div>
       <div>
         <button onClick={()=>{
-
+          markStatus(flashcards[currCardIndex], 'Unfamiliar', setAllProblems);
         }}>Unfamiliar</button>
-        <button>Familiar</button>
-        <button>Mastered</button>
+        <button onClick={()=>{
+          markStatus(flashcards[currCardIndex], 'Familiar', setAllProblems);
+        }}>Familiar</button>
+        <button onClick={()=>{
+          markStatus(flashcards[currCardIndex], 'Mastered', setAllProblems);
+        }}>Mastered</button>
       </div>
       <button onClick={()=>{
         if (currCardIndex !== 0) {
