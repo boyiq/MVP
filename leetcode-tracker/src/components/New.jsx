@@ -4,7 +4,7 @@ import generateLink from '../helpers/generateLink.js'
 import {renderCats, renderLevels, renderDurations} from '../helpers/renderLists.js'
 
 const New = ({allProblems, setAllProblems})=>{
-  const [newProblem, setNewProblem] = useState({});
+  const [newProblem, setNewProblem] = useState({name:"", category:"Arrays", level:"Easy", target_duration:"15"});
 
   const handleSubmit = (problem)=>{
     console.log(problem);
