@@ -158,6 +158,13 @@ button:hover {
 .dropdown-list {
   width: 160px
 }
+
+.explanation {
+  margin: auto;
+  margin-top: 50px;
+  width: 50vw;
+  font-style: italic;
+}
 /* ----------- Practice flashcards Page ------------ */
 .flashcard {
   display: flex;

@@ -65,6 +65,12 @@ const Practice = ({allProblems, setAllProblems})=>{
             setCurrCardIndex(0);
           }}>OK</button>
         </form>
+        <div className="explanation">
+          <b>Review mode:</b> 5 randomly picked out problems in the chosen category that consists of 2 unfamiliar problems, 2 familiar problems and 1 mastered problem.
+        </div>
+        <div className="explanation">
+          <b>Grind mode:</b> 3 randomly picked out problems in the chosen category that consists of 2 unfamiliar problems and 1 familar problem.
+        </div>
       </div>
     )
   }
