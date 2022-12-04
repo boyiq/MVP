@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>My Leetcode Progress</h1>
+      <h1>My Leetcode Progress yay</h1>
       <div className="navbar-section">
         <Router>
         <Navbar />
