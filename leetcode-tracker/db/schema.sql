@@ -10,4 +10,4 @@ CREATE TABLE problems (
   familiarity VARCHAR(20)
 );
 
-COPY problems(name, category, level, target_duration, last_duration, link, familiarity) FROM '/Users/boyiqu/Desktop/Immersive/MVP/Blind75-2.csv' DELIMITER ',' CSV HEADER;
+COPY problems(name, category, level, target_duration, last_duration, link, familiarity) FROM '/tmp/Blind75-2.csv' DELIMITER ',' CSV HEADER;
